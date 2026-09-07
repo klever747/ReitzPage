@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { GalleryPhoto } from '../types';
-import { Camera, X, Maximize2 } from 'lucide-react';
+import { Camera, X, Maximize2, ExternalLink } from 'lucide-react';
 
 interface FotosModalProps {
   isOpen: boolean;
@@ -39,12 +39,24 @@ export const FotosModal: React.FC<FotosModalProps> = ({ isOpen, onClose, photos 
             </div>
           </div>
 
-          <button
-            onClick={onClose}
-            className="w-8 h-8 rounded-full bg-neutral-900 border border-neutral-700 text-neutral-400 hover:text-white flex items-center justify-center transition-colors cursor-pointer"
-          >
-            <X className="w-4 h-4" />
-          </button>
+          <div className="flex items-center gap-2">
+            <a
+              href="https://drive.google.com/drive/folders/1AjC2xHOhVvhylGwhKYh4Zy-ksUsP_h4A"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-[#d4af37]/20 border border-[#d4af37]/50 text-[#f5df96] hover:bg-[#d4af37]/30 text-xs transition-colors"
+            >
+              <span>Abrir Drive</span>
+              <ExternalLink className="w-3.5 h-3.5" />
+            </a>
+
+            <button
+              onClick={onClose}
+              className="w-8 h-8 rounded-full bg-neutral-900 border border-neutral-700 text-neutral-400 hover:text-white flex items-center justify-center transition-colors cursor-pointer"
+            >
+              <X className="w-4 h-4" />
+            </button>
+          </div>
         </div>
 
         {/* Category Tabs */}

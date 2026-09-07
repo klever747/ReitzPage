@@ -42,8 +42,7 @@ export default function App() {
   };
 
   const handleOpenFotos = () => {
-    setActiveSection('fotos');
-    setIsFotosOpen(true);
+    window.open('https://drive.google.com/drive/folders/1AjC2xHOhVvhylGwhKYh4Zy-ksUsP_h4A', '_blank', 'noopener,noreferrer');
   };
 
   const handleOpenPlanos = () => {

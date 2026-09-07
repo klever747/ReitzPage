@@ -41,7 +41,7 @@ export const QuickNavPills: React.FC<QuickNavPillsProps> = ({
       id: 'fotos',
       label: 'FOTOS',
       icon: Camera,
-      action: onOpenFotos,
+      href: 'https://drive.google.com/drive/folders/1AjC2xHOhVvhylGwhKYh4Zy-ksUsP_h4A',
     },
     {
       id: 'planos',
