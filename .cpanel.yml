@@ -1,11 +1,9 @@
 ---
 # Configuración oficial de despliegue automático cPanel Git™ Version Control
-# Proyecto: Ventas Reitz
+# Servidor: cpanel.cofiza.com | Usuario: cofizaco | Dominio: cofiza.com
 deployment:
   tasks:
-    - export DEPLOYPATH=/home/TU_USUARIO_CPANEL/public_html/
-    # Copia los archivos del proyecto o el build a public_html
-    - /bin/cp -R * $DEPLOYPATH
-    # Si existe carpeta dist (generada por Vite), copiar su contenido:
-    # - /bin/cp -R dist/* $DEPLOYPATH
+    - export DEPLOYPATH=/home/cofizaco/public_html/
+    # Copia el build listo para producción a public_html
+    - /bin/cp -R dist/* $DEPLOYPATH
     - /bin/chmod -R 755 $DEPLOYPATH
