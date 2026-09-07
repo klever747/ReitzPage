@@ -37,10 +37,8 @@ export default function App() {
     setIsProjectsOpen(true);
   };
 
-  const handleOpenCotizador = (project?: Project) => {
-    setActiveSection('cotizador');
-    if (project) setQuotingProject(project);
-    setIsCotizadorOpen(true);
+  const handleOpenCotizador = () => {
+    window.open('https://cotizador.ventasreitz.com/login', '_blank', 'noopener,noreferrer');
   };
 
   const handleOpenFotos = () => {

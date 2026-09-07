@@ -147,16 +147,15 @@ export const PlanosModal: React.FC<PlanosModalProps> = ({
               </div>
 
               {/* Cotizar this plan */}
-              <button
-                onClick={() => {
-                  onClose();
-                  onOpenCotizador();
-                }}
+              <a
+                href="https://cotizador.ventasreitz.com/login"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="w-full py-3 rounded-xl bg-[#d4af37] hover:bg-[#ebd58d] text-black font-semibold text-xs sm:text-sm flex items-center justify-center gap-2 shadow-lg transition-all cursor-pointer"
               >
-                <span>Simular Financiamiento de esta Tipología</span>
+                <span>Ir al Cotizador Oficial de Ventas Reitz</span>
                 <ArrowRight className="w-4 h-4" />
-              </button>
+              </a>
             </div>
           </div>
         </div>

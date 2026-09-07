@@ -40,12 +40,14 @@ export const Navbar: React.FC<NavbarProps> = ({
           >
             Proyectos
           </button>
-          <button
-            onClick={onOpenCotizador}
+          <a
+            href="https://cotizador.ventasreitz.com/login"
+            target="_blank"
+            rel="noopener noreferrer"
             className="hidden md:block text-xs text-neutral-300 hover:text-[#f5df96] transition-colors cursor-pointer"
           >
             Cotizador
-          </button>
+          </a>
 
           {/* Direct WhatsApp Callout */}
           <a

@@ -139,16 +139,15 @@ export const ProjectsModal: React.FC<ProjectsModalProps> = ({
                       {project.availableUnits} unidades disponibles
                     </span>
 
-                    <button
-                      onClick={() => {
-                        onSelectProjectToQuote(project);
-                        onClose();
-                      }}
+                    <a
+                      href="https://cotizador.ventasreitz.com/login"
+                      target="_blank"
+                      rel="noopener noreferrer"
                       className="px-3 py-1.5 rounded-lg bg-[#d4af37] hover:bg-[#ebd58d] text-black font-semibold text-xs flex items-center gap-1 transition-colors cursor-pointer shadow"
                     >
                       <span>Cotizar</span>
                       <ArrowRight className="w-3 h-3" />
-                    </button>
+                    </a>
                   </div>
                 </div>
               </div>

@@ -18,7 +18,13 @@ export const QuickNavPills: React.FC<QuickNavPillsProps> = ({
   onOpenSocial,
   activeSection,
 }) => {
-  const items = [
+  const items: Array<{
+    id: string;
+    label: string;
+    icon: React.ComponentType<{ className?: string }>;
+    action?: () => void;
+    href?: string;
+  }> = [
     {
       id: 'proyectos',
       label: 'NUESTROS PROYECTOS',
@@ -29,7 +35,7 @@ export const QuickNavPills: React.FC<QuickNavPillsProps> = ({
       id: 'cotizador',
       label: 'COTIZADOR',
       icon: Calculator,
-      action: onOpenCotizador,
+      href: 'https://cotizador.ventasreitz.com/login',
     },
     {
       id: 'fotos',
@@ -58,24 +64,20 @@ export const QuickNavPills: React.FC<QuickNavPillsProps> = ({
         {items.map((item) => {
           const Icon = item.icon;
           const isActive = activeSection === item.id;
+          const sharedClassName = `group flex flex-col items-center justify-center flex-shrink-0 w-[68px] sm:w-24 md:w-28 h-[104px] sm:h-32 md:h-36 rounded-[28px] sm:rounded-[34px] transition-all duration-300 relative cursor-pointer
+            ${
+              isActive
+                ? 'bg-gradient-to-b from-[#1c1a16] to-[#0c0b09] ring-2 ring-[#f4db8a] shadow-[0_0_25px_rgba(212,175,55,0.45)]'
+                : 'bg-gradient-to-b from-[#141419]/90 to-[#0a0a0d]/95 hover:from-[#1b1915] hover:to-[#100e0a]'
+            }
+          `;
+          const sharedStyle = {
+            border: '1.5px solid rgba(212, 175, 55, 0.4)',
+            boxShadow: 'inset 0 0 10px rgba(212, 175, 55, 0.12), 0 4px 18px rgba(0,0,0,0.7)',
+          };
 
-          return (
-            <button
-              key={item.id}
-              onClick={item.action}
-              id={`quick-nav-${item.id}`}
-              className={`group flex flex-col items-center justify-center flex-shrink-0 w-[68px] sm:w-24 md:w-28 h-[104px] sm:h-32 md:h-36 rounded-[28px] sm:rounded-[34px] transition-all duration-300 relative cursor-pointer
-                ${
-                  isActive
-                    ? 'bg-gradient-to-b from-[#1c1a16] to-[#0c0b09] ring-2 ring-[#f4db8a] shadow-[0_0_25px_rgba(212,175,55,0.45)]'
-                    : 'bg-gradient-to-b from-[#141419]/90 to-[#0a0a0d]/95 hover:from-[#1b1915] hover:to-[#100e0a]'
-                }
-              `}
-              style={{
-                border: '1.5px solid rgba(212, 175, 55, 0.4)',
-                boxShadow: 'inset 0 0 10px rgba(212, 175, 55, 0.12), 0 4px 18px rgba(0,0,0,0.7)',
-              }}
-            >
+          const innerContent = (
+            <>
               {/* Nested inner border mimicking the high-end luxury frame */}
               <div className="absolute inset-[3.5px] rounded-[24px] sm:rounded-[30px] border border-[#d4af37]/25 pointer-events-none group-hover:border-[#d4af37]/60 transition-colors" />
 
@@ -89,6 +91,34 @@ export const QuickNavPills: React.FC<QuickNavPillsProps> = ({
               <span className="text-[8px] sm:text-[10px] md:text-[11px] font-medium tracking-wider text-center leading-tight text-[#d5b058] group-hover:text-[#f8e6a5] px-1 transition-colors">
                 {item.label}
               </span>
+            </>
+          );
+
+          if (item.href) {
+            return (
+              <a
+                key={item.id}
+                href={item.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                id={`quick-nav-${item.id}`}
+                className={sharedClassName}
+                style={sharedStyle}
+              >
+                {innerContent}
+              </a>
+            );
+          }
+
+          return (
+            <button
+              key={item.id}
+              onClick={item.action}
+              id={`quick-nav-${item.id}`}
+              className={sharedClassName}
+              style={sharedStyle}
+            >
+              {innerContent}
             </button>
           );
         })}
