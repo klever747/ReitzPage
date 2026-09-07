@@ -49,13 +49,13 @@ export const Navbar: React.FC<NavbarProps> = ({
 
           {/* Direct WhatsApp Callout */}
           <a
-            href="https://wa.me/56984521101?text=Hola,%20deseo%20informaci%C3%B3n%20sobre%20los%20desarrollos%20inmobiliarios%20Reitz"
+            href="https://wa.me/593984973895?text=Hola,%20deseo%20informaci%C3%B3n%20sobre%20los%20desarrollos%20inmobiliarios%20Reitz"
             target="_blank"
             rel="noopener noreferrer"
-            className="hidden sm:flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-emerald-950/70 border border-emerald-600/40 text-emerald-400 hover:text-emerald-300 text-xs transition-colors"
+            className="flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-emerald-950/70 border border-emerald-600/40 text-emerald-400 hover:text-emerald-300 text-xs transition-colors"
           >
             <MessageCircle className="w-3.5 h-3.5" />
-            <span>WhatsApp Ventas</span>
+            <span className="hidden xs:inline">WhatsApp Ventas</span>
           </a>
 
           {/* Contact button */}
