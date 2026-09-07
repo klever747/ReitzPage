@@ -3,7 +3,6 @@
 # Servidor: ventasreitz.com | Usuario: ventasreitz
 deployment:
   tasks:
-    - export DEPLOYPATH=/home/ventasreitz/public_html/
-    - /bin/cp -R dist/* $DEPLOYPATH
-    - /bin/cp dist/.htaccess $DEPLOYPATH
-    - /bin/chmod -R 755 $DEPLOYPATH
+    - /bin/cp -rf dist/* /home/ventasreitz/public_html/
+    - /bin/cp -f dist/.htaccess /home/ventasreitz/public_html/.htaccess
+    - /bin/chmod -R 755 /home/ventasreitz/public_html/
