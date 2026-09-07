@@ -1,0 +1,7 @@
+{
+  "name": "Ventas Reitz - Desarrollos Inmobiliarios Exclusivos",
+  "description": "Portal inmobiliario exclusivo Ventas Reitz con proyectos, cotizador interactivo, fotos, planos y asesores de venta.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
+

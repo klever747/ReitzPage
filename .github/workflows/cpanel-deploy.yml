@@ -1,0 +1,49 @@
+name: 🚀 Despliegue Automático a cPanel (Ventas Reitz)
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build-and-deploy:
+    name: Compilar y Desplegar a cPanel
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: 📥 Clonar repositorio
+        uses: actions/checkout@v4
+
+      - name: 🟢 Configurar Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: 'npm'
+
+      - name: 📦 Instalar dependencias
+        run: npm ci
+
+      - name: 🔨 Compilar aplicación (Vite)
+        run: npm run build
+
+      - name: 📂 Copiar archivos de soporte (.htaccess y deploy.php)
+        run: |
+          cp deploy.php dist/ || true
+          cp .cpanel.yml dist/ || true
+
+      - name: 🚀 Sincronizar con cPanel vía FTP / FTPS
+        uses: SamKirkland/FTP-Deploy-Action@v4.3.5
+        with:
+          server: ${{ secrets.CPANEL_FTP_SERVER }}
+          username: ${{ secrets.CPANEL_FTP_USERNAME }}
+          password: ${{ secrets.CPANEL_FTP_PASSWORD }}
+          server-dir: /public_html/
+          local-dir: ./dist/
+          dangerous-clean-slate: false
+
+      - name: 📡 (Opcional) Notificar Webhook de cPanel
+        if: env.WEBHOOK_URL != ''
+        env:
+          WEBHOOK_URL: ${{ secrets.CPANEL_WEBHOOK_URL }}
+        run: |
+          curl -X POST "$WEBHOOK_URL" -H "Content-Type: application/json" -d '{"event":"deployed", "repo":"${{ github.repository }}"}'
