@@ -1,0 +1,65 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 340 420" width="100%" height="100%" fill="none">
+  <defs>
+    <!-- Metallic Luxury Gold Gradient -->
+    <linearGradient id="reitzGoldGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#fdf4c9" />
+      <stop offset="18%" stop-color="#f2da84" />
+      <stop offset="42%" stop-color="#d4af37" />
+      <stop offset="70%" stop-color="#a67c1e" />
+      <stop offset="90%" stop-color="#ddbe58" />
+      <stop offset="100%" stop-color="#ebd58d" />
+    </linearGradient>
+
+    <!-- Subtle Drop Shadow for depth -->
+    <filter id="goldGlow" x="-10%" y="-10%" width="130%" height="130%">
+      <feDropShadow dx="0" dy="2" stdDeviation="3" flood-color="#000000" flood-opacity="0.3" />
+    </filter>
+  </defs>
+
+  <g filter="url(#goldGlow)">
+    <!-- Architectural Building Silhouette Frame -->
+    <!-- Left vertical: 80,360 to 80,175 | Roof slope: to 225,75 | Right vertical: to 225,360 | Bottom: to 80,360 -->
+    <path 
+      d="M 80 360 L 80 176 L 225 76 L 225 360 L 80 360 Z" 
+      stroke="url(#reitzGoldGrad)" 
+      stroke-width="7" 
+      stroke-linejoin="miter" 
+      stroke-miterlimit="6"
+      fill="none" 
+    />
+
+    <!-- Elegant Roman/Cinzel Golden 'R' -->
+    <!-- Main vertical stem with serifs -->
+    <!-- Top Serif: left point 100,188; right point 146,188; thickness down to stem -->
+    <path
+      d="M 98 188 L 144 188 L 138 196 L 126 196 L 126 312 L 138 312 L 144 320 L 98 320 L 104 312 L 116 312 L 116 196 L 104 196 Z"
+      fill="url(#reitzGoldGrad)"
+    />
+
+    <!-- Upper loop/bowl of 'R' -->
+    <path
+      d="M 124 188 C 172 188 204 198 204 227 C 204 256 168 266 124 266 L 124 254 C 160 254 189 248 189 227 C 189 206 156 200 124 200 Z"
+      fill="url(#reitzGoldGrad)"
+    />
+
+    <!-- Sweeping curved diagonal leg extending gracefully past the frame -->
+    <path
+      d="M 148 252 C 164 252 178 265 190 286 C 203 309 218 333 246 339 C 238 340 220 340 208 326 C 196 312 185 292 174 274 C 166 262 158 257 148 254 Z"
+      fill="url(#reitzGoldGrad)"
+    />
+
+    <!-- 'By Cofiza' signature text at bottom right -->
+    <text
+      x="215"
+      y="350"
+      text-anchor="end"
+      fill="url(#reitzGoldGrad)"
+      font-family="'Playfair Display', 'Cinzel', 'Times New Roman', serif"
+      font-size="11"
+      font-weight="600"
+      letter-spacing="0.5"
+    >
+      By Cofiza
+    </text>
+  </g>
+</svg>
