@@ -47,8 +47,7 @@ export default function App() {
   };
 
   const handleOpenPlanos = () => {
-    setActiveSection('planos');
-    setIsPlanosOpen(true);
+    window.open('https://drive.google.com/drive/folders/17sO5A0sqqKFK8ELezIqDG3RP-6aJNcq6', '_blank', 'noopener,noreferrer');
   };
 
   const handleOpenSocial = () => {

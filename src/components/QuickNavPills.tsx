@@ -47,7 +47,7 @@ export const QuickNavPills: React.FC<QuickNavPillsProps> = ({
       id: 'planos',
       label: 'PLANOS',
       icon: Layers,
-      action: onOpenPlanos,
+      href: 'https://drive.google.com/drive/folders/17sO5A0sqqKFK8ELezIqDG3RP-6aJNcq6',
     },
     {
       id: 'redes',

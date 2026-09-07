@@ -146,6 +146,17 @@ export const PlanosModal: React.FC<PlanosModalProps> = ({
                 </div>
               </div>
 
+              {/* Link to Google Drive folder */}
+              <a
+                href="https://drive.google.com/drive/folders/17sO5A0sqqKFK8ELezIqDG3RP-6aJNcq6"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-full py-3 rounded-xl bg-neutral-900 hover:bg-neutral-800 border border-[#d4af37]/40 text-[#f5df96] font-semibold text-xs sm:text-sm flex items-center justify-center gap-2 transition-all cursor-pointer"
+              >
+                <span>Ver Planos Completos en Google Drive</span>
+                <ArrowRight className="w-4 h-4 text-[#d4af37]" />
+              </a>
+
               {/* Cotizar this plan */}
               <a
                 href="https://cotizador.ventasreitz.com/login"
