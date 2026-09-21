@@ -32,10 +32,13 @@ export const AdvisorsSection: React.FC<AdvisorsSectionProps> = ({ advisors }) =>
                 referrerPolicy="no-referrer"
                 onError={(e) => {
                   const target = e.currentTarget;
-                  if (target.src.endsWith('.svg')) {
-                    target.src = target.src.replace('.svg', '.jpg');
-                  } else if (target.src.endsWith('.jpg')) {
-                    target.src = target.src.replace('.jpg', '.svg');
+                  const currentSrc = target.src;
+                  if (currentSrc.endsWith('.jpg')) {
+                    target.src = currentSrc.replace('.jpg', '.jpeg');
+                  } else if (currentSrc.endsWith('.jpeg')) {
+                    target.src = currentSrc.replace('.jpeg', '.png');
+                  } else if (currentSrc.endsWith('.png')) {
+                    target.src = currentSrc.replace('.png', '.svg');
                   }
                 }}
                 className="w-full h-full object-cover object-top"
