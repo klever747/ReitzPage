@@ -1,9 +1,52 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Advisor } from '../types';
 
 interface AdvisorsSectionProps {
   advisors: Advisor[];
 }
+
+const AdvisorCard: React.FC<{ advisor: Advisor }> = ({ advisor }) => {
+  const fallbacks = advisor.photoFallbacks || [advisor.photoUrl];
+  const [fallbackIndex, setFallbackIndex] = useState(0);
+
+  const currentSrc = fallbacks[fallbackIndex] || advisor.photoUrl;
+
+  const handleError = () => {
+    if (fallbackIndex < fallbacks.length - 1) {
+      setFallbackIndex((prev) => prev + 1);
+    }
+  };
+
+  return (
+    <div className="flex flex-col items-center text-center group">
+      {/* Portrait with sleek gold frame and rounded corners */}
+      <div
+        className="w-full aspect-[3/4] rounded-xl sm:rounded-2xl overflow-hidden bg-neutral-900 border border-[#caa34d]/60 shadow-[0_4px_25px_rgba(0,0,0,0.8)] transition-transform duration-300 group-hover:scale-[1.03] group-hover:border-[#e7c978]"
+        style={{
+          boxShadow: '0 8px 24px -6px rgba(0, 0, 0, 0.9), 0 0 10px rgba(202, 163, 77, 0.15)',
+        }}
+      >
+        <img
+          src={currentSrc}
+          alt={advisor.name}
+          referrerPolicy="no-referrer"
+          onError={handleError}
+          className="w-full h-full object-cover object-top"
+        />
+      </div>
+
+      {/* Informative text below photo */}
+      <div className="mt-3 space-y-0.5 w-full">
+        <h3 className="text-xs sm:text-xs md:text-sm font-semibold tracking-wider text-[#e6ca85] uppercase font-cinzel leading-tight line-clamp-1">
+          {advisor.name}
+        </h3>
+        <p className="text-[10px] sm:text-[11px] text-neutral-300 font-light tracking-wide leading-tight">
+          {advisor.role}
+        </p>
+      </div>
+    </div>
+  );
+};
 
 export const AdvisorsSection: React.FC<AdvisorsSectionProps> = ({ advisors }) => {
   return (
@@ -18,43 +61,7 @@ export const AdvisorsSection: React.FC<AdvisorsSectionProps> = ({ advisors }) =>
       {/* 6 Advisors Grid - Responsive from mobile (2 cols) to tablet (3 cols) to desktop (6 cols) */}
       <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3.5 sm:gap-4 lg:gap-5">
         {advisors.map((advisor) => (
-          <div key={advisor.id} className="flex flex-col items-center text-center group">
-            {/* Portrait with sleek gold frame and rounded corners */}
-            <div
-              className="w-full aspect-[3/4] rounded-xl sm:rounded-2xl overflow-hidden bg-neutral-900 border border-[#caa34d]/60 shadow-[0_4px_25px_rgba(0,0,0,0.8)] transition-transform duration-300 group-hover:scale-[1.03] group-hover:border-[#e7c978]"
-              style={{
-                boxShadow: '0 8px 24px -6px rgba(0, 0, 0, 0.9), 0 0 10px rgba(202, 163, 77, 0.15)',
-              }}
-            >
-              <img
-                src={advisor.photoUrl}
-                alt={advisor.name}
-                referrerPolicy="no-referrer"
-                onError={(e) => {
-                  const target = e.currentTarget;
-                  const currentSrc = target.src;
-                  if (currentSrc.endsWith('.jpg')) {
-                    target.src = currentSrc.replace('.jpg', '.jpeg');
-                  } else if (currentSrc.endsWith('.jpeg')) {
-                    target.src = currentSrc.replace('.jpeg', '.png');
-                  } else if (currentSrc.endsWith('.png')) {
-                    target.src = currentSrc.replace('.png', '.svg');
-                  }
-                }}
-                className="w-full h-full object-cover object-top"
-              />
-            </div>
-
-            {/* Informative text below photo */}
-            <div className="mt-3 space-y-0.5 w-full">
-              <h3 className="text-xs sm:text-xs md:text-sm font-semibold tracking-wider text-[#e6ca85] uppercase font-cinzel leading-tight line-clamp-1">
-                {advisor.name}
-              </h3>
-              <p className="text-[10px] sm:text-[11px] text-neutral-300 font-light tracking-wide leading-tight">
-                {advisor.role}
-              </p>
-            </div>
-          </div>
+          <AdvisorCard key={advisor.id} advisor={advisor} />
         ))}
       </div>
     </section>

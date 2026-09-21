@@ -3,6 +3,7 @@ export interface Advisor {
   name: string;
   role: string;
   photoUrl: string;
+  photoFallbacks?: string[];
   phone: string;
   whatsapp: string;
   email: string;
