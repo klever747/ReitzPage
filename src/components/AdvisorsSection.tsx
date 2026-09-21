@@ -30,6 +30,14 @@ export const AdvisorsSection: React.FC<AdvisorsSectionProps> = ({ advisors }) =>
                 src={advisor.photoUrl}
                 alt={advisor.name}
                 referrerPolicy="no-referrer"
+                onError={(e) => {
+                  const target = e.currentTarget;
+                  if (target.src.endsWith('.svg')) {
+                    target.src = target.src.replace('.svg', '.jpg');
+                  } else if (target.src.endsWith('.jpg')) {
+                    target.src = target.src.replace('.jpg', '.svg');
+                  }
+                }}
                 className="w-full h-full object-cover object-top"
               />
             </div>
